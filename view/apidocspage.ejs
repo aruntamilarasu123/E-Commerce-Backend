@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>E-Commerce API Documentation</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+  <div class="p-8 max-w-6xl mx-auto">
+    <h1 class="text-4xl font-bold mb-6">E-Commerce API Documentation</h1>
+
+    <!-- Auth Section -->
+    <div class="mb-6 border rounded-lg shadow-sm">
+      <button class="w-full text-left px-4 py-3 font-semibold text-lg bg-gray-100 hover:bg-gray-200 flex justify-between items-center" onclick="toggleSection('auth')">
+        Auth <span id="toggle-auth">+</span>
+      </button>
+      <div id="section-auth" class="p-4 bg-white hidden">
+        <table class="w-full table-auto border-collapse">
+          <thead>
+            <tr class="bg-gray-50">
+              <th class="border px-4 py-2 text-left">Method</th>
+              <th class="border px-4 py-2 text-left">Route</th>
+              <th class="border px-4 py-2 text-left">Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="hover:bg-gray-50"><td class="border px-4 py-2 font-semibold text-blue-600">POST</td><td class="border px-4 py-2 font-mono">/auth/register</td><td class="border px-4 py-2">Signup</td></tr>
+            <tr class="hover:bg-gray-50"><td class="border px-4 py-2 font-semibold text-blue-600">POST</td><td class="border px-4 py-2 font-mono">/auth/login</td><td class="border px-4 py-2">Login</td></tr>
+            <tr class="hover:bg-gray-50"><td class="border px-4 py-2 font-semibold text-blue-600">POST</td><td class="border px-4 py-2 font-mono">/auth/change-password</td><td class="border px-4 py-2">Change password</td></tr>
+            <tr class="hover:bg-gray-50"><td class="border px-4 py-2 font-semibold text-blue-600">POST</td><td class="border px-4 py-2 font-mono">/auth/forgot-password</td><td class="border px-4 py-2">Request password reset</td></tr>
+            <tr class="hover:bg-gray-50"><td class="border px-4 py-2 font-semibold text-blue-600">POST</td><td class="border px-4 py-2 font-mono">/auth/reset-password/:token</td><td class="border px-4 py-2">Reset password</td></tr>
+            <tr class="hover:bg-gray-50"><td class="border px-4 py-2 font-semibold text-green-600">GET</td><td class="border px-4 py-2 font-mono">/auth/buyer/profile</td><td class="border px-4 py-2">Get buyer profile</td></tr>
+            <tr class="hover:bg-gray-50"><td class="border px-4 py-2 font-semibold text-yellow-600">PUT</td><td class="border px-4 py-2 font-mono">/auth/buyer/profile</td><td class="border px-4 py-2">Update buyer profile</td></tr>
+            <tr class="hover:bg-gray-50"><td class="border px-4 py-2 font-semibold text-green-600">GET</td><td class="border px-4 py-2 font-mono">/auth/seller/profile</td><td class="border px-4 py-2">Get seller profile</td></tr>
+            <tr class="hover:bg-gray-50"><td class="border px-4 py-2 font-semibold text-yellow-600">PUT</td><td class="border px-4 py-2 font-mono">/auth/seller/profile</td><td class="border px-4 py-2">Update seller profile</td></tr>
+            <tr class="hover:bg-gray-50"><td class="border px-4 py-2 font-semibold text-blue-600">POST</td><td class="border px-4 py-2 font-mono">/auth/wishlist</td><td class="border px-4 py-2">Add product to wishlist</td></tr>
+            <tr class="hover:bg-gray-50"><td class="border px-4 py-2 font-semibold text-green-600">GET</td><td class="border px-4 py-2 font-mono">/auth/wishlist</td><td class="border px-4 py-2">Get wishlist</td></tr>
+            <tr class="hover:bg-gray-50"><td class="border px-4 py-2 font-semibold text-red-600">DELETE</td><td class="border px-4 py-2 font-mono">/auth/wishlist/:productId</td><td class="border px-4 py-2">Remove product from wishlist</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Similarly add Products, Cart, Orders, Payments sections as in your HTML -->
+
+  </div>
+
+  <script>
+    function toggleSection(id) {
+      const section = document.getElementById('section-' + id);
+      const toggle = document.getElementById('toggle-' + id);
+      if(section.classList.contains('hidden')){
+        section.classList.remove('hidden');
+        toggle.textContent = '−';
+      } else {
+        section.classList.add('hidden');
+        toggle.textContent = '+';
+      }
+    }
+  </script>
+
+</body>
+</html>
