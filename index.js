@@ -30,13 +30,9 @@ HTTP_Server.use(express.json())
 // Start Server
 const PORT = process.env.PORT || 5000;
 
-HTTP_Server.listen(PORT,'0.0.0.0',() => {
-    try {
-        console.log(`Server running on port ${PORT}`);
-    } catch (error) {
-        console.log("Server Connection Error", error)
-    }
-})
+HTTP_Server.listen(PORT, '0.0.0.0', () => {
+  console.log(`Server running on port ${PORT}`);
+});
 
 // Router
 HTTP_Server.use("/auth", AuthRouter)
@@ -45,4 +41,6 @@ HTTP_Server.use("/orders", OrderRouter)
 HTTP_Server.use("/cart", CartRouter)
 HTTP_Server.use('/payments', PaymentRouter);
 HTTP_Server.use('/uploads', express.static(path.join(__dirname, 'uploads')));
-
+HTTP_Server.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'views', 'apidocspage.html'));
+});
