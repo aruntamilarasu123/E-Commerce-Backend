@@ -41,9 +41,8 @@ HTTP_Server.use("/orders", OrderRouter)
 HTTP_Server.use("/cart", CartRouter)
 HTTP_Server.use('/payments', PaymentRouter);
 HTTP_Server.use('/uploads', express.static(path.join(__dirname, 'uploads')));
-HTTP_Server.set('view engine', 'ejs');
-HTTP_Server.set('views', path.join(__dirname, 'views'));
+
 HTTP_Server.get('/', (req, res) => {
-  res.render('apidocspage');
+  res.sendFile(path.join(__dirname, 'views', 'apidocspage.html'));
 });
 
