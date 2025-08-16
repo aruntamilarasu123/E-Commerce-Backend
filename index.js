@@ -19,7 +19,7 @@ const HTTP_Server = express();
 // Enable Cors
 HTTP_Server.use(cors())
 // HTTP_Server.use(cors({
-//   origin: 'http://localhost:5173', // must NOT be '*'
+//   origin: 'https://e-commerce-frontend-1oqq.onrender.com', // must NOT be '*'
 //   credentials: true,               // allow cookies/auth headers
 // }));
 
