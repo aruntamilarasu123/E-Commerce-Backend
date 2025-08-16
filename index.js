@@ -27,15 +27,6 @@ HTTP_Server.use(cors())
 // Middleware
 HTTP_Server.use(express.json())
 
-// Set EJS as view engine
-app.set('view engine', 'ejs');
-app.set('views', path.join(__dirname, 'views'));
-
-// Example route
-app.get('/', (req, res) => {
-  res.render('apidocspage'); // Render views/apidocspage.ejs
-});
-
 // Start Server
 const PORT = process.env.PORT || 5000;
 
@@ -50,5 +41,9 @@ HTTP_Server.use("/orders", OrderRouter)
 HTTP_Server.use("/cart", CartRouter)
 HTTP_Server.use('/payments', PaymentRouter);
 HTTP_Server.use('/uploads', express.static(path.join(__dirname, 'uploads')));
-
+HTTP_Server.set('view engine', 'ejs');
+HTTP_Server.set('views', path.join(__dirname, 'views'));
+HTTP_Server.get('/', (req, res) => {
+  res.render('apidocspage');
+});
 
