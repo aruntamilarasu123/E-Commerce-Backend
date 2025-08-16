@@ -1,163 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>E-Commerce API Documentation</title>
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.3.3/dist/tailwind.min.css" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-gray-50 text-gray-800">
+<body class="bg-gray-100 text-gray-900 font-sans">
 
-  <!-- Header -->
-  <header class="bg-white shadow-sm py-6 mb-6">
-    <div class="max-w-7xl mx-auto px-6">
-      <h1 class="text-4xl font-bold text-gray-900">E-Commerce API Documentation</h1>
-      <p class="text-gray-600 mt-1">Node.js + Express + MongoDB backend</p>
+  <header class="bg-blue-600 text-white py-6 shadow-md">
+    <div class="max-w-5xl mx-auto px-4">
+      <h1 class="text-3xl font-bold">E-Commerce API Documentation</h1>
+      <p class="text-sm text-blue-200 mt-1">RESTful API for product and order management</p>
     </div>
   </header>
 
-  <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row gap-6">
+  <main class="max-w-5xl mx-auto p-6 space-y-10">
 
-    <!-- Sidebar -->
-    <aside class="md:w-64 bg-white p-4 rounded-lg shadow-sm mb-6 md:mb-0">
-      <h2 class="font-semibold text-lg mb-4">Sections</h2>
-      <ul class="space-y-2 text-gray-700">
-        <li><a href="#auth" class="hover:text-blue-600">Auth</a></li>
-        <li><a href="#products" class="hover:text-blue-600">Products</a></li>
-        <li><a href="#cart" class="hover:text-blue-600">Cart</a></li>
-        <li><a href="#orders" class="hover:text-blue-600">Orders</a></li>
-        <li><a href="#payments" class="hover:text-blue-600">Payments</a></li>
-      </ul>
-    </aside>
+    <!-- Products Section -->
+    <section>
+      <h2 class="text-2xl font-semibold border-b pb-2 mb-4">📦 Products</h2>
 
-    <!-- Main content -->
-    <main class="flex-1 space-y-8">
+      <div class="space-y-4">
+        <div>
+          <h3 class="text-lg font-medium">GET /api/products</h3>
+          <p class="text-gray-700">Returns a list of all products.</p>
+        </div>
 
-      <!-- Auth Section -->
-      <section id="auth" class="bg-white p-6 rounded-lg shadow-sm">
-        <h2 class="text-2xl font-bold mb-4">Auth</h2>
-        <p class="mb-4 text-gray-600">Authentication routes for buyer & seller</p>
-        <table class="w-full border-collapse">
-          <thead>
-            <tr class="bg-gray-100">
-              <th class="border px-4 py-2 text-left">Method</th>
-              <th class="border px-4 py-2 text-left">Route</th>
-              <th class="border px-4 py-2 text-left">Description</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr class="hover:bg-gray-50"><td class="border px-4 py-2 font-semibold text-blue-600">POST</td><td class="border px-4 py-2 font-mono">/auth/register</td><td class="border px-4 py-2">Signup</td></tr>
-            <tr class="hover:bg-gray-50"><td class="border px-4 py-2 font-semibold text-blue-600">POST</td><td class="border px-4 py-2 font-mono">/auth/login</td><td class="border px-4 py-2">Login</td></tr>
-            <tr class="hover:bg-gray-50"><td class="border px-4 py-2 font-semibold text-blue-600">POST</td><td class="border px-4 py-2 font-mono">/auth/change-password</td><td class="border px-4 py-2">Change password</td></tr>
-            <tr class="hover:bg-gray-50"><td class="border px-4 py-2 font-semibold text-blue-600">POST</td><td class="border px-4 py-2 font-mono">/auth/forgot-password</td><td class="border px-4 py-2">Request password reset</td></tr>
-            <tr class="hover:bg-gray-50"><td class="border px-4 py-2 font-semibold text-blue-600">POST</td><td class="border px-4 py-2 font-mono">/auth/reset-password/:token</td><td class="border px-4 py-2">Reset password</td></tr>
-            <tr class="hover:bg-gray-50"><td class="border px-4 py-2 font-semibold text-green-600">GET</td><td class="border px-4 py-2 font-mono">/auth/buyer/profile</td><td class="border px-4 py-2">Get buyer profile</td></tr>
-            <tr class="hover:bg-gray-50"><td class="border px-4 py-2 font-semibold text-yellow-600">PUT</td><td class="border px-4 py-2 font-mono">/auth/buyer/profile</td><td class="border px-4 py-2">Update buyer profile</td></tr>
-            <tr class="hover:bg-gray-50"><td class="border px-4 py-2 font-semibold text-green-600">GET</td><td class="border px-4 py-2 font-mono">/auth/seller/profile</td><td class="border px-4 py-2">Get seller profile</td></tr>
-            <tr class="hover:bg-gray-50"><td class="border px-4 py-2 font-semibold text-yellow-600">PUT</td><td class="border px-4 py-2 font-mono">/auth/seller/profile</td><td class="border px-4 py-2">Update seller profile</td></tr>
-            <tr class="hover:bg-gray-50"><td class="border px-4 py-2 font-semibold text-blue-600">POST</td><td class="border px-4 py-2 font-mono">/auth/wishlist</td><td class="border px-4 py-2">Add product to wishlist</td></tr>
-            <tr class="hover:bg-gray-50"><td class="border px-4 py-2 font-semibold text-green-600">GET</td><td class="border px-4 py-2 font-mono">/auth/wishlist</td><td class="border px-4 py-2">Get wishlist</td></tr>
-            <tr class="hover:bg-gray-50"><td class="border px-4 py-2 font-semibold text-red-600">DELETE</td><td class="border px-4 py-2 font-mono">/auth/wishlist/:productId</td><td class="border px-4 py-2">Remove product from wishlist</td></tr>
-          </tbody>
-        </table>
-      </section>
+        <div>
+          <h3 class="text-lg font-medium">GET /api/products/:id</h3>
+          <p class="text-gray-700">Returns details of a single product.</p>
+        </div>
 
-      <!-- Products Section -->
-      <section id="products" class="bg-white p-6 rounded-lg shadow-sm">
-        <h2 class="text-2xl font-bold mb-4">Products</h2>
-        <table class="w-full border-collapse">
-          <thead>
-            <tr class="bg-gray-100">
-              <th class="border px-4 py-2 text-left">Method</th>
-              <th class="border px-4 py-2 text-left">Route</th>
-              <th class="border px-4 py-2 text-left">Description</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr class="hover:bg-gray-50"><td class="border px-4 py-2 font-semibold text-green-600">GET</td><td class="border px-4 py-2 font-mono">/products</td><td class="border px-4 py-2">Get all products (search, filter, sort, pagination)</td></tr>
-            <tr class="hover:bg-gray-50"><td class="border px-4 py-2 font-semibold text-green-600">GET</td><td class="border px-4 py-2 font-mono">/products/:id</td><td class="border px-4 py-2">Get single product</td></tr>
-            <tr class="hover:bg-gray-50"><td class="border px-4 py-2 font-semibold text-blue-600">POST</td><td class="border px-4 py-2 font-mono">/products</td><td class="border px-4 py-2">Create product (seller)</td></tr>
-            <tr class="hover:bg-gray-50"><td class="border px-4 py-2 font-semibold text-yellow-600">PUT</td><td class="border px-4 py-2 font-mono">/products/:id</td><td class="border px-4 py-2">Update product (seller)</td></tr>
-            <tr class="hover:bg-gray-50"><td class="border px-4 py-2 font-semibold text-red-600">DELETE</td><td class="border px-4 py-2 font-mono">/products/:id</td><td class="border px-4 py-2">Delete product (seller)</td></tr>
-            <tr class="hover:bg-gray-50"><td class="border px-4 py-2 font-semibold text-purple-600">POST</td><td class="border px-4 py-2 font-mono">/products/:id/review</td><td class="border px-4 py-2">Add/update review (buyer)</td></tr>
-          </tbody>
-        </table>
-      </section>
+        <div>
+          <h3 class="text-lg font-medium">POST /api/products</h3>
+          <p class="text-gray-700">Creates a new product. Requires authentication.</p>
+        </div>
+      </div>
+    </section>
 
-      <!-- Cart Section -->
-      <section id="cart" class="bg-white p-6 rounded-lg shadow-sm">
-        <h2 class="text-2xl font-bold mb-4">Cart</h2>
-        <table class="w-full border-collapse">
-          <thead>
-            <tr class="bg-gray-100">
-              <th class="border px-4 py-2 text-left">Method</th>
-              <th class="border px-4 py-2 text-left">Route</th>
-              <th class="border px-4 py-2 text-left">Description</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr class="hover:bg-gray-50"><td class="border px-4 py-2 font-semibold text-green-600">GET</td><td class="border px-4 py-2 font-mono">/cart</td><td class="border px-4 py-2">Get user's cart</td></tr>
-            <tr class="hover:bg-gray-50"><td class="border px-4 py-2 font-semibold text-blue-600">POST</td><td class="border px-4 py-2 font-mono">/cart</td><td class="border px-4 py-2">Add product to cart</td></tr>
-            <tr class="hover:bg-gray-50"><td class="border px-4 py-2 font-semibold text-yellow-600">PUT</td><td class="border px-4 py-2 font-mono">/cart/:productId</td><td class="border px-4 py-2">Update product quantity</td></tr>
-            <tr class="hover:bg-gray-50"><td class="border px-4 py-2 font-semibold text-red-600">DELETE</td><td class="border px-4 py-2 font-mono">/cart/:productId</td><td class="border px-4 py-2">Remove product from cart</td></tr>
-          </tbody>
-        </table>
-      </section>
+    <!-- Orders Section -->
+    <section>
+      <h2 class="text-2xl font-semibold border-b pb-2 mb-4">🛒 Orders</h2>
 
-      <!-- Orders Section -->
-      <section id="orders" class="bg-white p-6 rounded-lg shadow-sm">
-        <h2 class="text-2xl font-bold mb-4">Orders</h2>
-        <table class="w-full border-collapse">
-          <thead>
-            <tr class="bg-gray-100">
-              <th class="border px-4 py-2 text-left">Method</th>
-              <th class="border px-4 py-2 text-left">Route</th>
-              <th class="border px-4 py-2 text-left">Description</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr class="hover:bg-gray-50"><td class="border px-4 py-2 font-semibold text-blue-600">POST</td><td class="border px-4 py-2 font-mono">/orders</td><td class="border px-4 py-2">Buyer places order</td></tr>
-            <tr class="hover:bg-gray-50"><td class="border px-4 py-2 font-semibold text-green-600">GET</td><td class="border px-4 py-2 font-mono">/orders/buyer</td><td class="border px-4 py-2">Get buyer's orders</td></tr>
-            <tr class="hover:bg-gray-50"><td class="border px-4 py-2 font-semibold text-green-600">GET</td><td class="border px-4 py-2 font-mono">/orders/seller</td><td class="border px-4 py-2">Get seller's orders</td></tr>
-            <tr class="hover:bg-gray-50"><td class="border px-4 py-2 font-semibold text-yellow-600">PUT</td><td class="border px-4 py-2 font-mono">/orders/:id/status</td><td class="border px-4 py-2">Update order status (seller)</td></tr>
-            <tr class="hover:bg-gray-50"><td class="border px-4 py-2 font-semibold text-red-600">PUT</td><td class="border px-4 py-2 font-mono">/orders/buyer/:id</td><td class="border px-4 py-2">Cancel buyer order</td></tr>
-            <tr class="hover:bg-gray-50"><td class="border px-4 py-2 font-semibold text-red-600">PUT</td><td class="border px-4 py-2 font-mono">/orders/seller/:id</td><td class="border px-4 py-2">Cancel seller order</td></tr>
-            <tr class="hover:bg-gray-50"><td class="border px-4 py-2 font-semibold text-purple-600">PATCH</td><td class="border px-4 py-2 font-mono">/orders/:id/mark-paid</td><td class="border px-4 py-2">Mark COD order as paid (seller)</td></tr>
-          </tbody>
-        </table>
-      </section>
+      <div class="space-y-4">
+        <div>
+          <h3 class="text-lg font-medium">GET /api/orders</h3>
+          <p class="text-gray-700">Returns a list of all orders (admin only).</p>
+        </div>
 
-      <!-- Payments Section -->
-      <section id="payments" class="bg-white p-6 rounded-lg shadow-sm">
-        <h2 class="text-2xl font-bold mb-4">Payments (Razorpay)</h2>
-        <table class="w-full border-collapse">
-          <thead>
-            <tr class="bg-gray-100">
-              <th class="border px-4 py-2 text-left">Method</th>
-              <th class="border px-4 py-2 text-left">Route</th>
-              <th class="border px-4 py-2 text-left">Description</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr class="hover:bg-gray-50"><td class="border px-4 py-2 font-semibold text-green-600">GET</td><td class="border px-4 py-2 font-mono">/payments/key</td><td class="border px-4 py-2">Get Razorpay public key</td></tr>
-            <tr class="hover:bg-gray-50"><td class="border px-4 py-2 font-semibold text-blue-600">POST</td><td class="border px-4 py-2 font-mono">/payments/create</td><td class="border px-4 py-2">Create Razorpay order</td></tr>
-            <tr class="hover:bg-gray-50"><td class="border px-4 py-2 font-semibold text-purple-600">POST</td><td class="border px-4 py-2 font-mono">/payments/verify</td><td class="border px-4 py-2">Verify payment & place order</td></tr>
-          </tbody>
-        </table>
-      </section>
+        <div>
+          <h3 class="text-lg font-medium">GET /api/orders/:id</h3>
+          <p class="text-gray-700">Returns a single order for the authenticated user.</p>
+        </div>
 
-    </main>
-  </div>
+        <div>
+          <h3 class="text-lg font-medium">POST /api/orders</h3>
+          <p class="text-gray-700">Creates a new order. Requires user authentication.</p>
+        </div>
+      </div>
+    </section>
 
-  <script>
-    // Optional: smooth scroll to sections
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
-      });
-    });
-  </script>
+    <!-- Users Section -->
+    <section>
+      <h2 class="text-2xl font-semibold border-b pb-2 mb-4">👤 Users</h2>
+
+      <div class="space-y-4">
+        <div>
+          <h3 class="text-lg font-medium">POST /api/users/register</h3>
+          <p class="text-gray-700">Registers a new user.</p>
+        </div>
+
+        <div>
+          <h3 class="text-lg font-medium">POST /api/users/login</h3>
+          <p class="text-gray-700">Logs in an existing user and returns a token.</p>
+        </div>
+
+        <div>
+          <h3 class="text-lg font-medium">GET /api/users/profile</h3>
+          <p class="text-gray-700">Returns the profile of the logged-in user.</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="text-center text-gray-500 py-6">
+    &copy; 2025 E-Commerce API. All rights reserved.
+  </footer>
 
 </body>
 </html>
