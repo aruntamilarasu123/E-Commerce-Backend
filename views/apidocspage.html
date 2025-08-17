@@ -4,90 +4,242 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>E-Commerce API Documentation</title>
-  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #f8f9fa;
+    }
+    code {
+      background-color: #f1f1f1;
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
+    .section-title {
+      margin-top: 3rem;
+    }
+  </style>
 </head>
-<body class="bg-gray-100 text-gray-900 font-sans">
+<body>
 
-  <header class="bg-blue-600 text-white py-6 shadow-md">
-    <div class="max-w-5xl mx-auto px-4">
-      <h1 class="text-3xl font-bold">E-Commerce API Documentation</h1>
-      <p class="text-sm text-blue-200 mt-1">RESTful API for product and order management</p>
+  <header class="bg-primary text-white py-4 shadow-sm">
+    <div class="container">
+      <h1 class="h2 fw-bold mb-0">E-Commerce API Documentation</h1>
+      <p class="text-white-50">Node.js + Express + MongoDB backend with full e-commerce features</p>
     </div>
   </header>
 
-  <main class="max-w-5xl mx-auto p-6 space-y-10">
-
-    <!-- Products Section -->
+  <main class="container py-5">
+    <!-- Features -->
     <section>
-      <h2 class="text-2xl font-semibold border-b pb-2 mb-4">📦 Products</h2>
+      <h2 class="section-title">🚀 Features</h2>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">User authentication (buyer & seller)</li>
+        <li class="list-group-item">Profile management & password reset</li>
+        <li class="list-group-item">Product CRUD for sellers</li>
+        <li class="list-group-item">Search, filter, sort, pagination</li>
+        <li class="list-group-item">Shopping cart & wishlist</li>
+        <li class="list-group-item">Razorpay integration (COD & online)</li>
+        <li class="list-group-item">Cloudinary for images</li>
+        <li class="list-group-item">Email notifications</li>
+      </ul>
+    </section>
 
-      <div class="space-y-4">
-        <div>
-          <h3 class="text-lg font-medium">GET /api/products</h3>
-          <p class="text-gray-700">Returns a list of all products.</p>
+    <!-- Tech Stack -->
+    <section>
+      <h2 class="section-title">🛠️ Tech Stack</h2>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item"><strong>Backend:</strong> Node.js, Express</li>
+        <li class="list-group-item"><strong>Database:</strong> MongoDB + Mongoose</li>
+        <li class="list-group-item"><strong>Authentication:</strong> JWT</li>
+        <li class="list-group-item"><strong>Payments:</strong> Razorpay</li>
+        <li class="list-group-item"><strong>Uploads:</strong> Cloudinary, Multer</li>
+        <li class="list-group-item"><strong>Email:</strong> Nodemailer</li>
+      </ul>
+    </section>
+
+    <!-- Getting Started -->
+    <section>
+      <h2 class="section-title">⚙️ Getting Started</h2>
+      <ol class="list-group list-group-numbered">
+        <li class="list-group-item">Clone the repo:
+          <pre><code>git clone &lt;repo-url&gt;
+cd ecommerce-backend</code></pre>
+        </li>
+        <li class="list-group-item">Install dependencies:
+          <pre><code>npm install</code></pre>
+        </li>
+        <li class="list-group-item">Create <code>.env</code> file:
+          <pre><code>PORT=5000
+MONGO_URI=your_mongodb_connection_string
+JWT_SECRET=your_jwt_secret
+EMAIL_USER=your_email@gmail.com
+EMAIL_PASS=your_email_app_password
+FRONTEND_URL=http://localhost:5173
+RAZORPAY_KEY_ID=your_razorpay_key_id
+RAZORPAY_KEY_SECRET=your_razorpay_key_secret
+CLOUDINARY_CLOUD_NAME=your_cloud_name
+CLOUDINARY_API_KEY=your_cloudinary_key
+CLOUDINARY_API_SECRET=your_cloudinary_secret</code></pre>
+        </li>
+        <li class="list-group-item">Start the server:
+          <pre><code>npm run start</code></pre>
+        </li>
+      </ol>
+    </section>
+
+    <!-- API Routes -->
+    <section>
+      <h2 class="section-title">📡 API Routes</h2>
+
+      <!-- Accordion -->
+      <div class="accordion" id="apiAccordion">
+
+        <!-- Auth -->
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="authHeading">
+            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#authRoutes" aria-expanded="true">
+              🔐 Auth
+            </button>
+          </h2>
+          <div id="authRoutes" class="accordion-collapse collapse show" data-bs-parent="#apiAccordion">
+            <div class="accordion-body">
+              <table class="table table-bordered table-striped">
+                <thead>
+                  <tr><th>Method</th><th>Route</th><th>Description</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>POST</td><td>/auth/register</td><td>Signup</td></tr>
+                  <tr><td>POST</td><td>/auth/login</td><td>Login</td></tr>
+                  <tr><td>POST</td><td>/auth/change-password</td><td>Change password</td></tr>
+                  <tr><td>POST</td><td>/auth/forgot-password</td><td>Request password reset</td></tr>
+                  <tr><td>POST</td><td>/auth/reset-password/:token</td><td>Reset password</td></tr>
+                  <tr><td>GET</td><td>/auth/buyer/profile</td><td>Get buyer profile</td></tr>
+                  <tr><td>PUT</td><td>/auth/buyer/profile</td><td>Update buyer profile</td></tr>
+                  <tr><td>GET</td><td>/auth/seller/profile</td><td>Get seller profile</td></tr>
+                  <tr><td>PUT</td><td>/auth/seller/profile</td><td>Update seller profile</td></tr>
+                  <tr><td>POST</td><td>/auth/wishlist</td><td>Add to wishlist</td></tr>
+                  <tr><td>GET</td><td>/auth/wishlist</td><td>Get wishlist</td></tr>
+                  <tr><td>DELETE</td><td>/auth/wishlist/:productId</td><td>Remove from wishlist</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
         </div>
 
-        <div>
-          <h3 class="text-lg font-medium">GET /api/products/:id</h3>
-          <p class="text-gray-700">Returns details of a single product.</p>
+        <!-- Products -->
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="productHeading">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#productRoutes">
+              📦 Products
+            </button>
+          </h2>
+          <div id="productRoutes" class="accordion-collapse collapse" data-bs-parent="#apiAccordion">
+            <div class="accordion-body">
+              <table class="table table-bordered table-striped">
+                <thead>
+                  <tr><th>Method</th><th>Route</th><th>Description</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>GET</td><td>/products</td><td>Get all products</td></tr>
+                  <tr><td>GET</td><td>/products/:id</td><td>Get single product</td></tr>
+                  <tr><td>POST</td><td>/products</td><td>Create product (seller)</td></tr>
+                  <tr><td>PUT</td><td>/products/:id</td><td>Update product</td></tr>
+                  <tr><td>DELETE</td><td>/products/:id</td><td>Delete product</td></tr>
+                  <tr><td>POST</td><td>/products/:id/review</td><td>Add/update review</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
         </div>
 
-        <div>
-          <h3 class="text-lg font-medium">POST /api/products</h3>
-          <p class="text-gray-700">Creates a new product. Requires authentication.</p>
+        <!-- Cart -->
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="cartHeading">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#cartRoutes">
+              🛒 Cart
+            </button>
+          </h2>
+          <div id="cartRoutes" class="accordion-collapse collapse" data-bs-parent="#apiAccordion">
+            <div class="accordion-body">
+              <table class="table table-bordered table-striped">
+                <thead>
+                  <tr><th>Method</th><th>Route</th><th>Description</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>GET</td><td>/cart</td><td>Get user's cart</td></tr>
+                  <tr><td>POST</td><td>/cart</td><td>Add to cart</td></tr>
+                  <tr><td>PUT</td><td>/cart/:productId</td><td>Update quantity</td></tr>
+                  <tr><td>DELETE</td><td>/cart/:productId</td><td>Remove from cart</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
         </div>
+
+        <!-- Orders -->
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="ordersHeading">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#ordersRoutes">
+              📦 Orders
+            </button>
+          </h2>
+          <div id="ordersRoutes" class="accordion-collapse collapse" data-bs-parent="#apiAccordion">
+            <div class="accordion-body">
+              <table class="table table-bordered table-striped">
+                <thead>
+                  <tr><th>Method</th><th>Route</th><th>Description</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>POST</td><td>/orders</td><td>Place an order</td></tr>
+                  <tr><td>GET</td><td>/orders/buyer</td><td>Get buyer orders</td></tr>
+                  <tr><td>GET</td><td>/orders/seller</td><td>Get seller orders</td></tr>
+                  <tr><td>PUT</td><td>/orders/:id/status</td><td>Update order status</td></tr>
+                  <tr><td>PUT</td><td>/orders/buyer/:id</td><td>Cancel buyer order</td></tr>
+                  <tr><td>PUT</td><td>/orders/seller/:id</td><td>Cancel seller order</td></tr>
+                  <tr><td>PATCH</td><td>/orders/:id/mark-paid</td><td>Mark COD order paid</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- Payments -->
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="paymentsHeading">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#paymentRoutes">
+              💳 Payments
+            </button>
+          </h2>
+          <div id="paymentRoutes" class="accordion-collapse collapse" data-bs-parent="#apiAccordion">
+            <div class="accordion-body">
+              <table class="table table-bordered table-striped">
+                <thead>
+                  <tr><th>Method</th><th>Route</th><th>Description</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>GET</td><td>/payments/key</td><td>Get Razorpay public key</td></tr>
+                  <tr><td>POST</td><td>/payments/create</td><td>Create Razorpay order</td></tr>
+                  <tr><td>POST</td><td>/payments/verify</td><td>Verify and place order</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
       </div>
     </section>
 
-    <!-- Orders Section -->
+    <!-- License -->
     <section>
-      <h2 class="text-2xl font-semibold border-b pb-2 mb-4">🛒 Orders</h2>
-
-      <div class="space-y-4">
-        <div>
-          <h3 class="text-lg font-medium">GET /api/orders</h3>
-          <p class="text-gray-700">Returns a list of all orders (admin only).</p>
-        </div>
-
-        <div>
-          <h3 class="text-lg font-medium">GET /api/orders/:id</h3>
-          <p class="text-gray-700">Returns a single order for the authenticated user.</p>
-        </div>
-
-        <div>
-          <h3 class="text-lg font-medium">POST /api/orders</h3>
-          <p class="text-gray-700">Creates a new order. Requires user authentication.</p>
-        </div>
-      </div>
+      <h2 class="section-title">📄 License</h2>
+      <p>MIT © Arun T</p>
     </section>
-
-    <!-- Users Section -->
-    <section>
-      <h2 class="text-2xl font-semibold border-b pb-2 mb-4">👤 Users</h2>
-
-      <div class="space-y-4">
-        <div>
-          <h3 class="text-lg font-medium">POST /api/users/register</h3>
-          <p class="text-gray-700">Registers a new user.</p>
-        </div>
-
-        <div>
-          <h3 class="text-lg font-medium">POST /api/users/login</h3>
-          <p class="text-gray-700">Logs in an existing user and returns a token.</p>
-        </div>
-
-        <div>
-          <h3 class="text-lg font-medium">GET /api/users/profile</h3>
-          <p class="text-gray-700">Returns the profile of the logged-in user.</p>
-        </div>
-      </div>
-    </section>
-
   </main>
 
-  <footer class="text-center text-gray-500 py-6">
+  <footer class="bg-light text-center text-muted py-4 mt-5 border-top">
     &copy; 2025 E-Commerce API. All rights reserved.
   </footer>
 
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
